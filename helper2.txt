@@ -1,6 +1,8 @@
-"-cf /folder"        Change folder
--ss                  See screen size
+"-cf /folder"                         Change folder
+"-nf filename here come the text"     New file
 
--os                  Operating system
--arch                Architecture
--cpu                 Cpu
+-ss                                   See screen size
+
+-os                                   Operating system
+-arch                                 Architecture
+-cpu                                  Cpu

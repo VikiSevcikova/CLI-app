@@ -34,14 +34,12 @@ let SimpleCLI = new CLIApplication("SimpleCLI", require('process'), [
         Message: 'Shows Suported Params',
         CallBack: () => {
             const fs = require('fs')
-
             try {
                 const data = fs.readFileSync('helper2.txt', 'utf8')
                 console.log(data)
               } catch (err) {
                 console.error(err)
               }
-              
         }
     },
     {
@@ -77,7 +75,8 @@ let SimpleCLI = new CLIApplication("SimpleCLI", require('process'), [
     {
         Switch: '-cf',
         Message: 'Change Folder',
-        CallBack: (folder) => {
+        CallBack: (data) => {
+            let folder = data[0];
             if(!folder){
                 console.log('Folder not found.');
             }else{
@@ -91,6 +90,21 @@ let SimpleCLI = new CLIApplication("SimpleCLI", require('process'), [
             }
         }
     },
+    {
+        Switch: '-nf',
+        Message: 'New Folder',
+        CallBack: (data) => {
+             const fs = require('fs');
+             let newFile = data[0];
+             let text = data.slice(1, data.length).join(' ');
+              try {
+                const data = fs.writeFileSync(newFile, text, 'utf8');
+                console.log('File was created successfully.')
+              } catch (err) {
+                console.error(err)
+              }
+            }
+        },
     {
         Switch: '-ss',
         Message: 'Screen Size',

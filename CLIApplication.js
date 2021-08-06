@@ -21,19 +21,18 @@ class CLIApplication {
 
   supportedParamaters = [
     {
-        Switch: '-h',
-        Message: 'Shows Suported Params',
-        CallBack: () => {
-            const fs = require('fs')
+      Switch: "-h",
+      Message: "Shows Suported Params",
+      CallBack: () => {
+        const fs = require("fs");
 
-            try {
-                const data = fs.readFileSync('helper1.txt', 'utf8')
-                console.log(data)
-              } catch (err) {
-                console.error(err)
-              }
-              
+        try {
+          const data = fs.readFileSync("helper1.txt", "utf8");
+          console.log(data);
+        } catch (err) {
+          console.error(err);
         }
+      },
     },
     {
       Switch: "-v",
@@ -111,11 +110,19 @@ class CLIApplication {
   checkParams() {
     for (let i = 0; i < this.suppliedParamaters.length; i++) {
       for (let j = 0; j < this.supportedParamaters.length; j++) {
-          //if there is command with more parameters it is expected to be in quotes seperated with space for example "-cf /Documents"
-       if (this.suppliedParamaters[i].split(" ") && this.suppliedParamaters[i].split(" ")[0] === this.supportedParamaters[j].Switch) {
-            this.supportedParamaters[j].CallBack(this.suppliedParamaters[i].split(" ")[1]);
-        }else if (this.suppliedParamaters[i] === this.supportedParamaters[j].Switch) {
-            this.supportedParamaters[j].CallBack(this);
+        //if there is command with more parameters it is expected to be in quotes seperated with space for example "-cf /Documents"
+        let suppliedParams = this.suppliedParamaters[i].split(" ");
+        let suppliedParamsRest = suppliedParams.slice(1, suppliedParams.length);
+        if (
+          suppliedParams &&
+          suppliedParams[0] === this.supportedParamaters[j].Switch &&
+          suppliedParamsRest.length !== 0
+        ) {
+          this.supportedParamaters[j].CallBack(suppliedParamsRest);
+        } else if (
+          this.suppliedParamaters[i] === this.supportedParamaters[j].Switch
+        ) {
+          this.supportedParamaters[j].CallBack(this);
         }
       }
     }
