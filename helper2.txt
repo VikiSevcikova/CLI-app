@@ -1,0 +1,6 @@
+"-cf /folder"        Change folder
+-ss                  See screen size
+
+-os                  Operating system
+-arch                Architecture
+-cpu                 Cpu

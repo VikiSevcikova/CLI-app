@@ -36,7 +36,7 @@ let SimpleCLI = new CLIApplication("SimpleCLI", require('process'), [
             const fs = require('fs')
 
             try {
-                const data = fs.readFileSync('helper.txt', 'utf8')
+                const data = fs.readFileSync('helper2.txt', 'utf8')
                 console.log(data)
               } catch (err) {
                 console.error(err)

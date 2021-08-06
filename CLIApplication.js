@@ -21,6 +21,21 @@ class CLIApplication {
 
   supportedParamaters = [
     {
+        Switch: '-h',
+        Message: 'Shows Suported Params',
+        CallBack: () => {
+            const fs = require('fs')
+
+            try {
+                const data = fs.readFileSync('helper1.txt', 'utf8')
+                console.log(data)
+              } catch (err) {
+                console.error(err)
+              }
+              
+        }
+    },
+    {
       Switch: "-v",
       Message: "Version 1",
       CallBack: function (Data) {
