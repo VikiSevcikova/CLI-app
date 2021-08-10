@@ -1,5 +1,5 @@
+//import the messages in different languages
 const Languages = require("./languages");
-
 class CLIApplication {
   static getMessage(key) {
     if (CLIApplication.STRING_DATA_COLLECTION[key]) {
@@ -8,6 +8,7 @@ class CLIApplication {
       return key;
     }
   }
+  //set the default language
   static STRING_DATA_COLLECTION = Languages.STRING_DATA_COLLECTION_DEFAULT;
 
   static ids = [];
@@ -21,7 +22,7 @@ class CLIApplication {
 
   supportedParamaters = [
     {
-      Switch: "-h",
+      Switch: "-help",
       Message: "Shows Suported Params",
       CallBack: () => {
         const fs = require("fs");
@@ -35,15 +36,15 @@ class CLIApplication {
       },
     },
     {
-      Switch: "-v",
+      Switch: "-version",
       Message: "Version 1",
-      CallBack: function (Data) {
+      CallBack: () => {
         console.log(this.Message);
       },
     },
     {
       Switch: "-jp",
-      CallBack: function (Data) {
+      CallBack: () => {
         CLIApplication.STRING_DATA_COLLECTION =
           Languages.STRING_DATA_COLLECTION_JP;
         console.log(CLIApplication.getMessage("ChangedLanguage"));
@@ -51,7 +52,7 @@ class CLIApplication {
     },
     {
       Switch: "-sk",
-      CallBack: function (Data) {
+      CallBack: () => {
         CLIApplication.STRING_DATA_COLLECTION =
           Languages.STRING_DATA_COLLECTION_SK;
         console.log(CLIApplication.getMessage("ChangedLanguage"));
@@ -59,7 +60,7 @@ class CLIApplication {
     },
     {
       Switch: "-fr",
-      CallBack: function (Data) {
+      CallBack: () => {
         CLIApplication.STRING_DATA_COLLECTION =
           Languages.STRING_DATA_COLLECTION_FR;
         console.log(CLIApplication.getMessage("ChangedLanguage"));
@@ -67,7 +68,7 @@ class CLIApplication {
     },
     {
       Switch: "-tk",
-      CallBack: function (Data) {
+      CallBack: () => {
         CLIApplication.STRING_DATA_COLLECTION =
           Languages.STRING_DATA_COLLECTION_TK;
         console.log(CLIApplication.getMessage("ChangedLanguage"));

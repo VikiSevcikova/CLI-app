@@ -30,7 +30,7 @@ const startApp = () => {
 
 let SimpleCLI = new CLIApplication("SimpleCLI", require('process'), [
     {
-        Switch: '-h',
+        Switch: '-help',
         Message: 'Shows Suported Params',
         CallBack: () => {
             const fs = require('fs')
@@ -43,7 +43,7 @@ let SimpleCLI = new CLIApplication("SimpleCLI", require('process'), [
         }
     },
     {
-        Switch: '-s',
+        Switch: '-startApp',
         Message: 'Start App',
         CallBack: startApp
     },
@@ -72,8 +72,45 @@ let SimpleCLI = new CLIApplication("SimpleCLI", require('process'), [
             cpus.map((cpu)=> console.log(cpu));
         }
     },
+
     {
-        Switch: '-cf',
+        Switch: '-ram',
+        Message: 'RAM',
+        CallBack: () => {
+            const os = require('os');
+            let free = os.freemem() / 1024 / 1024 / 1024;
+            let total = os.totalmem() / 1024 / 1024 /1024;
+            console.log(`Free memory: ${Math.floor(free * 100) /100} GB`);
+            console.log(`Total memory: ${Math.floor(total * 100) /100} GB`);
+        }
+    },
+
+    {
+        Switch: '-hdd',
+        Message: 'HDD',
+        CallBack: () => {
+            const cp = require('child_process');
+            if (process.platform == 'win32') { // Run wmic for Windows.
+                cp.exec('wmic logicaldisk get size,freespace,caption', (error, stdout)=>{
+                    if(error){
+                        console.error(error); return
+                    } 
+                    console.log(stdout);
+                });
+                
+            } else { // Run df for Linux.
+                cp.exec('df', (error, stdout)=>{
+                    if(error){
+                        console.error(error); return
+                    } 
+                   console.log(stdout);
+                });
+            }
+        }
+    },
+
+    {
+        Switch: '-changeFolder',
         Message: 'Change Folder',
         CallBack: (data) => {
             let folder = data[0];
@@ -91,7 +128,7 @@ let SimpleCLI = new CLIApplication("SimpleCLI", require('process'), [
         }
     },
     {
-        Switch: '-nf',
+        Switch: '-newFolder',
         Message: 'New Folder',
         CallBack: (data) => {
              const fs = require('fs');
@@ -106,7 +143,7 @@ let SimpleCLI = new CLIApplication("SimpleCLI", require('process'), [
             }
         },
     {
-        Switch: '-ss',
+        Switch: '-screenSize',
         Message: 'Screen Size',
         CallBack: () => {
             console.log(`Screen size: ${process.stdout.columns}x${process.stdout.rows}`);

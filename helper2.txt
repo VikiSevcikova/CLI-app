@@ -1,8 +1,10 @@
-"-cf /folder"                         Change folder
-"-nf filename here come the text"     New file
+"-changeFolder /folder"                        Change folder
+"-newFolder filename here come the text"       New file
 
--ss                                   See screen size
+-screenSize                                    See screen size
 
--os                                   Operating system
--arch                                 Architecture
--cpu                                  Cpu
+-os                                            Operating system
+-arch                                          Architecture
+-cpu                                           Cpu
+-ram                                           RAM memory usage
+-hdd                                           Disk drive memory usage

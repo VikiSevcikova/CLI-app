@@ -1,5 +1,5 @@
--h                   Show supported params
--v                   See version
+-help                   Show supported params
+-version                   See version
 
 -en                  Change language to english
 -sk                  Change language to slovak
