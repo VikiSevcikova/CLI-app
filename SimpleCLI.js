@@ -98,7 +98,7 @@ let SimpleCLI = new CLIApplication("SimpleCLI", require('process'), [
                     console.log(stdout);
                 });
                 
-            } else { // Run df for Linux.
+            } if(process.platform === 'linux' || process.platform === 'darwin') { // Run for Linux or mac
                 cp.exec('df', (error, stdout)=>{
                     if(error){
                         console.error(error); return
