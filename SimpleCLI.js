@@ -128,8 +128,8 @@ let SimpleCLI = new CLIApplication("SimpleCLI", require('process'), [
         }
     },
     {
-        Switch: '-newFolder',
-        Message: 'New Folder',
+        Switch: '-newFile',
+        Message: 'New File',
         CallBack: (data) => {
              const fs = require('fs');
              let newFile = data[0];

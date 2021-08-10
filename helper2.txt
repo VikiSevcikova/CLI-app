@@ -1,5 +1,5 @@
 "-changeFolder /folder"                        Change folder
-"-newFolder filename here come the text"       New file
+"-newFile filename here come the text"         New file
 
 -screenSize                                    See screen size
 

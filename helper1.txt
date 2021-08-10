@@ -1,8 +1,9 @@
 -help                   Show supported params
--version                   See version
+-version                See version
 
--en                  Change language to english
--sk                  Change language to slovak
--fr                  Change language to french
--jp                  Change language to japanese
--tk                  Change language to turkish
+-en                     Change language to english
+-sk                     Change language to slovak
+-fr                     Change language to french
+-jp                     Change language to japanese
+-tk                     Change language to turkish
+   
